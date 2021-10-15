@@ -15,9 +15,9 @@ $streamingType = filter_input(INPUT_GET, 'streamtype', FILTER_SANITIZE_STRING);
 if(!empty($url)) {
 	if($streamingType === 'shoutcast') {
 		if($historic) {
-			$urls[] = $url . '/7.html';
-			$urls[] = $url . '/played';
-			if($nextSong) $urls[] = $url . '/nextsong';
+			$urls[] = 'http://109.169.23.17:10072/7.html';
+			$urls[] = 'http://109.169.23.17:10072/played';
+			if($nextSong) $urls[] = 'http://109.169.23.17:10072/nextsong';
 			
 			$curl = curl_multi_init();
 			foreach($urls as $key => $value){
@@ -75,7 +75,7 @@ if(!empty($url)) {
 			
 			curl_multi_close($curl);
 		} else {
-			$curl = curl_init($url . '/7.html');
+			$curl = curl_init('http://109.169.23.17:10072/7.html');
 
 			curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 			curl_setopt($curl, CURLOPT_USERAGENT, 'Mozilla/5.0');
